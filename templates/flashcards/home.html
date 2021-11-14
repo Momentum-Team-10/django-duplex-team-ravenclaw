@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+
+<p><a href="{% url 'add_deck' %}">Add New Deck</a></p>
+
+<div>
+  {% for deck in decks %}
+  <div>
+    <div>{{ deck.title }}</div>
+    <p>
+        <a href="{% url 'edit_deck' deck=deck.pk %}">Edit Book</a><br>    
+        <a class="red" href="{% url 'delete_deck' deck=deck.pk %}">Delete Book</a>
+    </p>
+  </div>
+  {% endfor %}
+</div>
+{% else %}<div>Please register or login.</div>
+{% endif %}
+{% endblock %}
