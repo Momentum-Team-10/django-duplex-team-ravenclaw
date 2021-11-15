@@ -10,8 +10,8 @@
   <div>
     <div>{{ deck.title }}</div>
     <p>
-        <a href="{% url 'edit_deck' deck=deck.pk %}">Edit Book</a><br>    
-        <a class="red" href="{% url 'delete_deck' deck=deck.pk %}">Delete Book</a>
+        <a href="{% url 'edit_deck' pk=deck.pk %}">Edit Deck</a><br>    
+        <a class="red" href="{% url 'delete_deck' pk=deck.pk %}">Delete Deck</a>
     </p>
   </div>
   {% endfor %}

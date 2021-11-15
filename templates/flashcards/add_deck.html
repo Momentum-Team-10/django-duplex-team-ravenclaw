@@ -5,7 +5,7 @@
 <h1>Add Deck</h1>
 
 <div>
-  <form action="{% url 'add_deck' user=user.pk %}" method="POST">
+  <form action="{% url 'add_deck' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <div>

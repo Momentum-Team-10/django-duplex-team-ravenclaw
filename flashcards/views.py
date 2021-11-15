@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
     user = request.user
-    decks = Deck.objects.filter(owner=user.pk)
+    decks = Deck.objects.filter(user=user.pk)
 
     return render(request, "flashcards/home.html", {
         "user": user, "decks": decks,})
@@ -20,12 +20,13 @@ def add_deck(request):
         form = DeckForm(data=request.POST)
         if form.is_valid():
             deck = form.save(commit=False)
+            deck.user_id = user.pk
             deck.save()
             # Should ideally redirect to add card
             return redirect(to='home')
 
     return render(request, "flashcards/add_deck.html", {
-        "user": user, "form": form})
+        "user": user, "form": form, })
 
 # This may need some work
 @login_required
@@ -53,6 +54,7 @@ def add_card(request, pk):
         form = CardForm(data=request.POST)
         if form.is_valid():
             card = form.save(commit=False)
+            card.user_id = deck.pk
             card.save()
             return redirect(to='view_cards', pk=pk)
 
