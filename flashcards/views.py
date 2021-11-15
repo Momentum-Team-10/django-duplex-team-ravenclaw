@@ -21,6 +21,7 @@ def add_deck(request):
         if form.is_valid():
             deck = form.save(commit=False)
             deck.save()
+            # Should ideally redirect to add card
             return redirect(to='home')
 
     return render(request, "flashcards/add_deck.html", {
