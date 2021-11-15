@@ -5,7 +5,7 @@
 <h1>Delete Card</h1>
 
 <div>
-    <form action="{% url 'delete_card' pk=card.pk %}" method="POST">
+    <form action="{% url 'delete_card' deck_pk=deck.pk card_pk=card.pk %}" method="POST">
       {% csrf_token %}
       <p>Are you sure you want to delete card with question: <span class="b">{{ card.question}}</span>?</p>
       <div>

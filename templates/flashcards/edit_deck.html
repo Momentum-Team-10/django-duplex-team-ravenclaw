@@ -2,7 +2,7 @@
 
 {% block content %}
 {% if request.user.is_authenticated %}
-<h1>Edit Deck</h1>
+<h1>Edit {{ deck.title }} </h1>
 
 <div>
   <form action="{% url 'edit_deck' pk=deck.pk %}" method="POST">

@@ -80,9 +80,9 @@ def play_deck(request, pk):
 def view_cards(request, pk):
     user = request.user
     deck = get_object_or_404(Deck, pk=pk)
-    cards = Deck.objects.filter(deck=deck.pk)
+    cards = Card.objects.filter(deck=deck.pk)
 
-    return render(request, "flashcards/home.html", {
+    return render(request, "flashcards/view_cards.html", {
         "user": user, "deck": deck, "cards": cards})
 
 def edit_card(request, deck_pk, card_pk):
@@ -94,16 +94,17 @@ def edit_card(request, deck_pk, card_pk):
         form = CardForm(data=request.POST, instance=card)
         if form.is_valid():
             form.save()
-            return redirect(to='/')
+            return redirect(to='view_cards', pk=deck_pk)
 
-    return render(request, "flashcards/edit_deck.html", {
+    return render(request, "flashcards/edit_card.html", {
         "form": form, "deck": deck, "card": card, "deck_pk": deck_pk, "card_pk": card_pk})
 
 def delete_card(request, deck_pk, card_pk):
-    deck = get_object_or_404(Deck, pk=deck_pk)
     card = get_object_or_404(Card, pk=card_pk)
+    deck = get_object_or_404(Deck, pk=deck_pk)
+
     if request.method == 'POST':
         card.delete()
-        return redirect(to='/')
+        return redirect(to='view_cards', pk=deck_pk)
     return render(request, "flashcards/delete_card.html",
-                  {"deck": deck, "card": card, "deck_pk": deck_pk, "card_pk": card_pk})
+                  {"card": card, "deck": deck})
