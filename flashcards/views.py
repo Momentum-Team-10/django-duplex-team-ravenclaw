@@ -19,7 +19,8 @@ def add_deck(request):
     else:
         form = DeckForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            deck = form.save(commit=False)
+            deck.save()
             return redirect(to='home')
 
     return render(request, "flashcards/add_deck.html", {
@@ -50,10 +51,9 @@ def add_card(request, pk):
     else:
         form = CardForm(data=request.POST)
         if form.is_valid():
-            # Unsure about this next line
-            form.instance.deck_id = pk
-            form.save()
-            return redirect(to='edit_deck', pk=pk)
+            card = form.save(commit=False)
+            card.save()
+            return redirect(to='view_cards', pk=pk)
 
     return render(request, "flashcards/add_card.html", {
         "user": user, "form": form, "deck":deck, "pk":pk})
@@ -73,6 +73,7 @@ def delete_deck(request, pk):
 def play_deck(request, pk):
     pass
 
+@login_required
 def view_cards():
     pass
 
