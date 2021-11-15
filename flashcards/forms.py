@@ -8,7 +8,6 @@ class CardForm(forms.ModelForm):
         fields = [
             "question",
             "answer",
-            "deck",
         ]
 
 
@@ -18,5 +17,4 @@ class DeckForm(forms.ModelForm):
         model = Deck
         fields = [
             "title",
-            # "card",
         ]
