@@ -75,8 +75,13 @@ def play_deck(request, pk):
     pass
 
 @login_required
-def view_cards():
-    pass
+def view_cards(request, pk):
+    user = request.user
+    deck = get_object_or_404(Deck, pk=pk)
+    cards = Deck.objects.filter(deck=deck.pk)
+
+    return render(request, "flashcards/home.html", {
+        "user": user, "deck": deck, "cards": cards})
 
 def edit_card(request, deck_pk, card_pk):
     deck = get_object_or_404(Deck, pk=deck_pk)
