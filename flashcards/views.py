@@ -20,6 +20,7 @@ def add_deck(request):
         form = DeckForm(data=request.POST)
         if form.is_valid():
             form.save()
+            # Should ideally redirect to add card
             return redirect(to='home')
 
     return render(request, "flashcards/add_deck.html", {

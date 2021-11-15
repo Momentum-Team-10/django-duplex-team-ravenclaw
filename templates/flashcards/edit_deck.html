@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<h1>Edit Deck</h1>
+
+<div>
+  <form action="{% url 'edit_deck' deck=deck.pk %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+      <button type="submit">Submit Changes</button>
+      <a href="{% url 'home' %}">Cancel</a>
+    </div>
+  </form>
+</div>
+{% else %}<div>Please register or login.</div>
+{% endif %}
+{% endblock %}
