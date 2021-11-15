@@ -54,7 +54,7 @@ def add_card(request, pk):
         form = CardForm(data=request.POST)
         if form.is_valid():
             card = form.save(commit=False)
-            card.deck_id = pk
+            card.deck_id = deck.pk
             card.save()
             return redirect(to='view_cards', pk=pk)
 

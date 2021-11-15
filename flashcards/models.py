@@ -43,5 +43,3 @@ class Deck(models.Model):
 
     def __repr__(self):
         return f"<Deck name={self.title}>"
-
-    
