@@ -89,7 +89,7 @@ def view_cards(request, pk):
     cards = Card.objects.filter(deck=deck.pk)
 
     return render(request, "flashcards/view_cards.html", {
-        "user": user, "deck": deck, "cards": cards})
+        "user": user, "deck": deck, "cards": cards,})
 
 def edit_card(request, deck_pk, card_pk):
     deck = get_object_or_404(Deck, pk=deck_pk)

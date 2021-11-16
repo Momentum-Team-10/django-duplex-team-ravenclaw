@@ -9,11 +9,9 @@
   {% for deck in decks %}
   <div>
     <div>{{ deck.title }}</div>
-    <p>
-        <a href="{% url 'view_cards' pk=deck.pk %}">View Cards in Deck</a><br>  
+    <p>  
         <a href="{% url 'play_deck' pk=deck.pk %}">Play a Deck</a><br>  
-
-        <a href="{% url 'edit_deck' pk=deck.pk %}">Edit Deck</a><br>    
+        <a href="{% url 'view_cards' pk=deck.pk %}">View Cards</a><br> 
         <a class="red" href="{% url 'delete_deck' pk=deck.pk %}">Delete Deck</a>
     </p>
   </div>
