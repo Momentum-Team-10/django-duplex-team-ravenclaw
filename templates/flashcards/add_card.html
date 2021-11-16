@@ -2,6 +2,7 @@
 
 {% block content %}
 {% if request.user.is_authenticated %}
+{% if request.user == deck.user %}
 <h1>Add Card to {{ deck.title }} </h1>
 
 <div>
@@ -14,6 +15,7 @@
     </div>
   </form>
 </div>
+{% else %}<div>You are not the owner of this deck.</div>{% endif %}
 {% else %}<div>Please register or login.</div>
 {% endif %}
 {% endblock %}

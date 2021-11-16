@@ -2,6 +2,7 @@
 
 {% block content %}
 {% if request.user.is_authenticated %}
+{% if request.user == deck.user %}
 
 <p><a href="{% url 'add_card' pk=deck.pk %}">Add New Card</a></p>
 
@@ -17,6 +18,7 @@
   </div>
   {% endfor %}
 </div>
+{% else %}<div>You are not the owner of this deck.</div>{% endif %}
 {% else %}<div>Please register or login.</div>
 {% endif %}
 {% endblock %}
