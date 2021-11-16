@@ -76,7 +76,7 @@ def delete_deck(request, pk):
 def play_deck(request, pk):
     user = request.user
     deck = get_object_or_404(Deck, pk=pk)
-    cards = Card.objects.filter(deck=deck.pk)
+    cards = Card.objects.filter(deck=deck.pk).order_by('?')
 
     return render(request, "flashcards/play_deck.html", {
         "user": user, "deck": deck, "cards": cards})
