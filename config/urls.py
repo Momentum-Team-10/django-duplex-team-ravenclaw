@@ -51,4 +51,6 @@ urlpatterns = [
     
     # Page with a prompt to delete an individual card
     path('<int:deck_pk>/<int:card_pk>/delete_card', views.delete_card, name='delete_card')
+
+    
 ]
