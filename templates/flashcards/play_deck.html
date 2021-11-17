@@ -7,9 +7,27 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 
+<button onClick="window.location.reload();">Reset Deck</button>
+<p><a href="{% url 'home' %}">Play a New Deck</a></p>
 <p><a href="#">Some Action</a></p>
 
-<div class="maincontainer" id="songs-list">
+
+
+<div>
+<h4>number of right answers</h4>
+<p id="right">0</p>
+</div>
+
+<div>
+<h4>number of wrong answers</h4> 
+<p id="wrong">0</p>
+</div>
+    
+
+
+
+
+<div class="maincontainer" id="cards-list">
 {% for card in cards %}
   <div class="card" id="card">
       <div class="front">
@@ -17,14 +35,13 @@
      </div>
      <div class="back">
             <div>{{ card.answer }}</div>
-    <p>
-        <a href="#">Right</a><br>    
-        <a class="red" href="#">Wrong</a>
-    </p>
+        <button type="button" onclick="wrongAnswer()">X</button>
+        <button type="button" onclick="rightAnswer()">✔</button>      
     </div>
 
   </div>
 {% endfor %}
+
 </div>
 {% else %}<div>Please register or login.</div>
 {% endif %}
@@ -42,4 +59,11 @@
         </div>
     </div> -->
 
+
+    <!-- <button type="button" onclick="myFunction()">Count!</button>
+
+    <p id="wrong">0</p>
+    <p id="right">0</p> -->
+
+    
 
