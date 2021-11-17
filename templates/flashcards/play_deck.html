@@ -29,6 +29,7 @@
 
 <div class="maincontainer" id="cards-list">
 {% for card in cards %}
+    {% if forloop.first %}
   <div class="card" id="card{{ card.pk }}">
       <div class="front">
             <div>{{ card.question }}</div>
@@ -41,6 +42,20 @@
     </div>
 
   </div>
+  {% else %}
+  <div class="card hidden-card" id="card{{ card.pk }}">
+    <div class="front">
+          <div>{{ card.question }}</div>
+   </div>
+   <div class="back">
+          <div>{{ card.question }}</div>
+          <div>{{ card.answer }}</div>
+      <button type="button" class="wrong_answer" onclick="wrongAnswer()">X</button>
+      <button type="button" class="right_answer" onclick="rightAnswer()">✔</button>      
+  </div>
+
+</div>
+  {% endif %}
 {% endfor %}
 
 </div>
