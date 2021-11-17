@@ -76,3 +76,7 @@ body {
     transform: rotateY(180deg);
 
 }
+
+.hidden-card {
+    display: none !important;
+}

@@ -42,4 +42,18 @@ var wrong = (function () {
     document.getElementById("right").innerHTML = right();
   }
 
+const right_answer_buttons = document.querySelectorAll(".right_answer")
+for (let button of right_answer_buttons) {
+  button.addEventListener("click", () => {
+    button.parentElement.parentElement.style.display = "none";
+    button.parentElement.parentElement.nextElementSibling.classList.remove('hidden-card')
+  })
+}
 
+const wrong_answer_buttons = document.querySelectorAll(".wrong_answer")
+for (let button of wrong_answer_buttons) {
+  button.addEventListener("click", () => {
+    button.parentElement.parentElement.style.display = "none";
+    button.parentElement.parentElement.nextElementSibling.classList.remove('hidden-card')
+  })
+}
