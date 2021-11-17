@@ -1,10 +1,18 @@
 
 
+// const cards = document.querySelectorAll(".card")
+// for (let card of cards) {
+//     card.addEventListener ("click", () => {
+//         card.classList.toggle("flipcard")
+//     })
+// }
+
 const cards = document.querySelectorAll(".card")
 for (let card of cards) {
     card.addEventListener ("click", () => {
-        card.classList.toggle("flipcard")
-    })
+      if (!(card.classList.contains("flipcard"))) {
+        card.classList.add("flipcard")
+    }})
 }
 
 // const cards = document.querySelectorAll(".card")
