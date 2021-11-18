@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+{% if request.user == deck.user %}
+
+<h3>{{ deck.title }}</h3>
+<a href="{% url 'edit_deck' pk=deck.pk %}">Edit Deck Name</a>
+<p><a href="{% url 'add_card' pk=deck.pk %}">Add New Card</a></p>
+
+
+<div>
+  {% for card in cards %}
+  <div>
+    <div>{{ card.question }}</div>
+    <div>{{ card.answer }}</div>
+    <p>
+        <a href="{% url 'edit_card' deck_pk=deck.pk card_pk=card.pk %}">Edit Card</a><br>    
+        <a class="red" href="{% url 'delete_card' deck_pk=deck.pk card_pk=card.pk %}">Delete Card</a>
+    </p>
+  </div>
+  {% endfor %}
+</div>
+{% else %}<div>You are not the owner of this deck.</div>{% endif %}
+{% else %}<div>Please register or login.</div>
+{% endif %}
+{% endblock %}

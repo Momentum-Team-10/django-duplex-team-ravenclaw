@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+{% if request.user == deck.user %}
+<h1>Add Card to {{ deck.title }} </h1>
+
+<div>
+  <form action="{% url 'add_card' pk=deck.pk %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+      <button type="submit">Submit Card</button>
+      <a href="{% url 'home' %}">Cancel</a>
+    </div>
+  </form>
+</div>
+{% else %}<div>You are not the owner of this deck.</div>{% endif %}
+{% else %}<div>Please register or login.</div>
+{% endif %}
+{% endblock %}

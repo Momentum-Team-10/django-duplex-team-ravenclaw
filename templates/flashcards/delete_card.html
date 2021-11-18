@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+{% if request.user == card.deck.user %}
+
+<h1>Delete Card</h1>
+
+<div>
+    <form action="{% url 'delete_card' deck_pk=deck.pk card_pk=card.pk %}" method="POST">
+      {% csrf_token %}
+      <p>Are you sure you want to delete card with question: <span class="b">{{ card.question}}</span>?</p>
+      <div>
+        <button type="submit">Delete Card</button><br />
+        <a href="{% url 'home' %}">Cancel</a>
+      </div>
+    </form>
+  </div>
+{% else %}<div>You are not the owner of this deck.</div>{% endif %}
+{% else %}<div>Please register or login.</div>
+{% endif %}
+{% endblock %}
