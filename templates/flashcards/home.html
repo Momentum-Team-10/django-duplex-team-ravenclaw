@@ -3,22 +3,24 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 
-<h2>Welcome Quirator!</h2>
+  <h2>Welcome Quirator!</h2>
+
 
 <div class="maincontainer">
   {% for deck in decks %}
   <div class="deck-container">
-    <a href="{% url 'play_deck' pk=deck.pk %}"><div class="deck">{{ deck.title }}<br><i class="fas fa-play-circle" style="color: white; font-size: 2em;"></i></div></a>
+    <div class="deck-content">
+      <a href="{% url 'play_deck' pk=deck.pk %}"><div class="deck">{{ deck.title }}<br><i class="fas fa-play-circle" style="color: white; font-size: 2em;"></i></div></a></div>
     <div class="deck-controls">
-      <a href="{% url 'view_cards' pk=deck.pk %}"><i class="fas fa-edit"></i></a>
+      <a class= "yellow" href="{% url 'view_cards' pk=deck.pk %}"><i class="fas fa-edit"></i></a>
       <a class="red" href="{% url 'delete_deck' pk=deck.pk %}"><i class="fas fa-trash-alt"></i></a>
     </div>
   </div>
   {% endfor %}
-  <div class="deck"><a href="{% url 'add_deck' %}"><i class="fas fa-plus" style="padding-top: 10%; font-size: 4em; color: white;"></i></a>
-  </div>
+  <div class="deck-container"><div class="deck"><a href="{% url 'add_deck' %}"><i class="fas fa-plus" style="font-size: 50px; color: white;"></i></a>
+  </div></div>
 </div>
 
-{% else %}<div>Please register or login.</div>
+{% else %}<div class="maincontainer"><p style="text-align: center;">Already have an account?<br><a class="washed-blue" href="/accounts/login/">Login</a></p><hr><p style="text-align: center;">Need to create an account?<br><a class="washed-blue" href="/accounts/register/">Register</a></p></div>
 {% endif %}
 {% endblock %}

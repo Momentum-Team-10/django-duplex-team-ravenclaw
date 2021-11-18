@@ -6,10 +6,12 @@
 
 {% block content %}
 {% if request.user.is_authenticated %}
-<div class="maincontainer" id="play-deck">
+
+<div class="maincontainer" id="play-deck">    
     <p>Click your quiz card to reveal the answer!</p>
-    <div id="exit"><a href="{% url 'home' %}"><i class="fas fa-times-circle"></i></a></div>
-    {% for card in cards %}
+    <div class="play-deck">
+    <div id="exit"><a href="{% url 'home' %}"><i class="fas fa-times-circle" style="color: red;"></i></a></div>
+       {% for card in cards %}
         {% if forloop.first %}
             <div class="card" id="card{{ card.pk }}">
                 <div class="front">
@@ -37,14 +39,16 @@
         {% endif %}
     {% endfor %}
     <div class="counter">
-        <h4><i class="fas fa-birthday-cake"></i></h4>
-        <p id="right">0</p>
-        <h4><i class="fas fa-skull-crossbones"></i></h4> 
-        <p id="wrong">0</p>
+        <p>Are you a Quizard?!</p>
+        <div class="count"><h4><i class="fas fa-birthday-cake"></i></h4>
+        <p id="right">0</p></div>
+        <div class="count"><h4><i class="fas fa-skull-crossbones"></i></h4> 
+        <p id="wrong">0</p></div>
     </div>
     <button id="reset" onClick="window.location.reload();">Reset Deck</button>
 </div>
-{% else %}<div>Please register or login.</div>
+</div>
+{% else %}<div class="maincontainer"><p>Already have an account?<br><a class="washed-blue" href="/accounts/login/">Login</a></p><hr><p>Need to create an account?<br><a class="washed-blue" href="/accounts/register/">Register</a></p></div>
 {% endif %}
 {% endblock %}
 
