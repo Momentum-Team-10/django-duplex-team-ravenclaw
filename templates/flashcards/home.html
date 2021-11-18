@@ -3,6 +3,8 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 
+<h2>Welcome Quirator!</h2>
+
 <div class="maincontainer">
   {% for deck in decks %}
   <div class="deck-container">
