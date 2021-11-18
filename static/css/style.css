@@ -92,14 +92,16 @@ h2 {
 }
 
 .deck {
+    flex-flow: column wrap;
     color: white;
     position: relative;
     width: 250px;
     height: 150px;
     margin: 25px;
     padding: 25px;
-    padding-top: 20%;
+    padding-top: 40px;
     text-decoration: none;
+    text-decoration-line: none;
     text-align: center;
     align-content: center;
     border-radius: 10px;
@@ -109,6 +111,7 @@ h2 {
     cursor: pointer;
     border: 2px solid rgba(119, 189, 250, 0.714);
     border-style: groove;
+    justify-content: space-around;
 }
 
 .deck:hover {

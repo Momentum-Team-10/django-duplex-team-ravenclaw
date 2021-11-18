@@ -10,7 +10,7 @@
   {% for deck in decks %}
   <div class="deck-container">
     <div class="deck-content">
-      <a href="{% url 'play_deck' pk=deck.pk %}"><div class="deck">{{ deck.title }}<br><i class="fas fa-play-circle" style="color: white; font-size: 2em;"></i></div></a></div>
+      <a href="{% url 'play_deck' pk=deck.pk %}"><div class="deck"><span style="font-size: 25px;">{{ deck.title }}</span><br><br><i class="fas fa-play-circle" style="color: white; font-size: 2em;"></i></div></a></div>
     <div class="deck-controls">
       <a class= "yellow" href="{% url 'view_cards' pk=deck.pk %}"><i class="fas fa-edit"></i></a>
       <a class="red" href="{% url 'delete_deck' pk=deck.pk %}"><i class="fas fa-trash-alt"></i></a>
