@@ -15,7 +15,7 @@
     </div>
   </form>
 </div>
-{% else %}<div>You are not the owner of this deck.</div>{% endif %}
-{% else %}<div>Please register or login.</div>
+{% else %}<div class="maincontainer">You are not the owner of this deck.</div>{% endif %}
+{% else %}<div class="maincontainer"><p style="text-align: center;">Already have an account?<br><a class="washed-blue" href="/accounts/login/">Login</a></p><hr><p style="text-align: center;">Need to create an account?<br><a class="washed-blue" href="/accounts/register/">Register</a></p></div>
 {% endif %}
 {% endblock %}

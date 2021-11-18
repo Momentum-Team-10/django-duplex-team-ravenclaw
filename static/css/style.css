@@ -14,14 +14,9 @@ body {
 .maincontainer {
     display: flex;
     flex-flow: row wrap;
-    /* position: absolute; */
-    /* width: 500px;
-    height: 500px;
-    background: none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
-    padding: 2em;
+    margin: 10px;
+    justify-content: space-around;
+    padding: 50px;
 }
 
 #play-deck {
@@ -76,25 +71,41 @@ body {
 .deck-container {
     display: flex;
     flex-direction: column;
+    text-decoration: none !important;
 }
 
 .deck-controls {
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
+    align-content: space-between;
+    width: 220px;
+}
+
+.deck-content {
+    flex-flow: column wrap;
     justify-content: space-between;
+    text-decoration: none !important;
+}
+
+h2 {
+    margin-top: 50px;
+    margin-left: 50px;
 }
 
 .deck {
+    color: white;
     position: relative;
     width: 250px;
     height: 150px;
     margin: 25px;
-    padding: 20px;
+    padding: 25px;
+    padding-top: 20%;
+    text-decoration: none;
     text-align: center;
     align-content: center;
     border-radius: 10px;
     cursor: pointer;
-    background-color: rgba(177, 206, 255, 0.673);
-    box-shadow: 0 0 10px #63c8f2;
+    background-color: rgb(177, 206, 255);
+    /* box-shadow: 0 0 10px white; */
     cursor: pointer;
     border: 2px solid rgba(119, 189, 250, 0.714);
     border-style: groove;
@@ -110,20 +121,45 @@ body {
 }
 
 #exit {
-    justify-content: end;
+    float: right;
+    margin: 20px;
+    color: red !important;
 }
 
 #reset {
-
+	box-shadow: 0px 10px 14px -7px #3e7327;
+	background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+	background-color:#77b55a;
+	border-radius:4px;
+	border:1px solid #4b8f29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	padding:6px 12px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #5b8a3c;
+    max-width: 200px;
+}
+#reset:hover {
+	background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+	background-color:#72b352;
+}
+#reset:active {
+	position:relative;
+	top:1px;
 }
 
-#edit-deck {
+
+/* #edit-deck {
 
 }
 
 .qa {
 
-}
+} */
 
 .edit-card {
     position: relative;
@@ -155,7 +191,22 @@ body {
     text-align: center;
 }
 
-.options {
+/* .options {
 
+} */
+
+.play-deck {
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: space-around;
 }
 
+.counter {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.count {
+    flex-flow: column wrap;
+}
