@@ -6,80 +6,45 @@
 
 {% block content %}
 {% if request.user.is_authenticated %}
-
-<button onClick="window.location.reload();">Reset Deck</button>
-<p><a href="{% url 'home' %}">Play a New Deck</a></p>
-<p><a href="#">Some Action</a></p>
-
-
-
-<div>
-<h4>number of right answers</h4>
-<p id="right">0</p>
-</div>
-
-<div>
-<h4>number of wrong answers</h4> 
-<p id="wrong">0</p>
-</div>
-    
-
-
-
-
-<div class="maincontainer" id="cards-list">
-{% for card in cards %}
-    {% if forloop.first %}
-  <div class="card" id="card{{ card.pk }}">
-      <div class="front">
-            <div>{{ card.question }}</div>
-     </div>
-     <div class="back">
-            <div>{{ card.question }}</div>
-            <div>{{ card.answer }}</div>
-        <button type="button" class="wrong_answer" onclick="wrongAnswer()">X</button>
-        <button type="button" class="right_answer" onclick="rightAnswer()">✔</button>      
+<div class="maincontainer" id="play-deck">
+    <p>Click your quiz card to reveal the answer!</p>
+    <div id="exit"><a href="{% url 'home' %}"><i class="fas fa-times-circle"></i></a></div>
+    {% for card in cards %}
+        {% if forloop.first %}
+            <div class="card" id="card{{ card.pk }}">
+                <div class="front">
+                    <p>{{ card.question }}</p>
+                </div>
+                <div class="back">
+                    <p>{{ card.question }}</p>
+                    <p class="answer">{{ card.answer }}</p>
+                    <button type="button" class="wrong_answer" onclick="wrongAnswer()"><i class="far fa-dizzy"></i></button>
+                    <button type="button" class="right_answer" onclick="rightAnswer()"><i class="far fa-smile-beam"></i></button>      
+                </div>
+            </div>
+        {% else %}
+            <div class="card hidden-card" id="card{{ card.pk }}">
+                <div class="front">
+                    <p>{{ card.question }}</p>
+                </div>
+                <div class="back">
+                    <p>{{ card.question }}</p>
+                    <p class="answer">{{ card.answer }}</p>
+                    <button type="button" class="wrong_answer" onclick="wrongAnswer()"><i class="far fa-dizzy"></i></button>
+                    <button type="button" class="right_answer" onclick="rightAnswer()"><i class="far fa-smile-beam"></i></button>      
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <div class="counter">
+        <h4><i class="fas fa-birthday-cake"></i></h4>
+        <p id="right">0</p>
+        <h4><i class="fas fa-skull-crossbones"></i></h4> 
+        <p id="wrong">0</p>
     </div>
-
-  </div>
-  {% else %}
-  <div class="card hidden-card" id="card{{ card.pk }}">
-    <div class="front">
-          <div>{{ card.question }}</div>
-   </div>
-   <div class="back">
-          <div>{{ card.question }}</div>
-          <div>{{ card.answer }}</div>
-      <button type="button" class="wrong_answer" onclick="wrongAnswer()">X</button>
-      <button type="button" class="right_answer" onclick="rightAnswer()">✔</button>      
-  </div>
-
-</div>
-  {% endif %}
-{% endfor %}
-
+    <button id="reset" onClick="window.location.reload();">Reset Deck</button>
 </div>
 {% else %}<div>Please register or login.</div>
 {% endif %}
 {% endblock %}
-
-
-    <!-- <div class="maincontainer">
-        <div class="card" id="card">
-            <div class="front">
-                <h1> My Front Text </h1>
-            </div>
-            <div class="back">
-                <h1> My Back Text </h1>
-            </div>
-        </div>
-    </div> -->
-
-
-    <!-- <button type="button" onclick="myFunction()">Count!</button>
-
-    <p id="wrong">0</p>
-    <p id="right">0</p> -->
-
-    
 
