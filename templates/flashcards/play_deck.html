@@ -6,6 +6,7 @@
 
 {% block content %}
 {% if request.user.is_authenticated %}
+{% if request.user == deck.user %}
 
 <div class="maincontainer" id="play-deck">    
     <p>Click your quiz card to reveal the answer!</p>
@@ -52,6 +53,7 @@
     <button id="reset" onClick="window.location.reload();">Reset Deck</button>
 </div>
 </div>
+{% else %}<div>You are not the owner of this deck.</div>{% endif %}
 {% else %}<div class="maincontainer"><p>Already have an account?<br><a class="washed-blue" href="/accounts/login/">Login</a></p><hr><p>Need to create an account?<br><a class="washed-blue" href="/accounts/register/">Register</a></p></div>
 {% endif %}
 {% endblock %}
