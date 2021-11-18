@@ -7,6 +7,7 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 <div class="maincontainer" id="play-deck">
+    <p>Click your quiz card to reveal the answer!</p>
     <div id="exit"><a href="{% url 'home' %}"><i class="fas fa-times-circle"></i></a></div>
     {% for card in cards %}
         {% if forloop.first %}
@@ -17,8 +18,8 @@
                 <div class="back">
                     <p>{{ card.question }}</p>
                     <p class="answer">{{ card.answer }}</p>
-                    <button type="button" class="wrong_answer" onclick="wrongAnswer()">X</button>
-                    <button type="button" class="right_answer" onclick="rightAnswer()">✔</button>      
+                    <button type="button" class="wrong_answer" onclick="wrongAnswer()"><i class="far fa-dizzy"></i></button>
+                    <button type="button" class="right_answer" onclick="rightAnswer()"><i class="far fa-smile-beam"></i></button>      
                 </div>
             </div>
         {% else %}
@@ -29,16 +30,16 @@
                 <div class="back">
                     <p>{{ card.question }}</p>
                     <p class="answer">{{ card.answer }}</p>
-                    <button type="button" class="wrong_answer" onclick="wrongAnswer()">X</button>
-                    <button type="button" class="right_answer" onclick="rightAnswer()">✔</button>      
+                    <button type="button" class="wrong_answer" onclick="wrongAnswer()"><i class="far fa-dizzy"></i></button>
+                    <button type="button" class="right_answer" onclick="rightAnswer()"><i class="far fa-smile-beam"></i></button>      
                 </div>
             </div>
         {% endif %}
     {% endfor %}
     <div class="counter">
-        <h4>number of right answers</h4>
+        <h4><i class="fas fa-birthday-cake"></i></h4>
         <p id="right">0</p>
-        <h4>number of wrong answers</h4> 
+        <h4><i class="fas fa-skull-crossbones"></i></h4> 
         <p id="wrong">0</p>
     </div>
     <button id="reset" onClick="window.location.reload();">Reset Deck</button>

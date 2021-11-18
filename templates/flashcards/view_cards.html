@@ -3,22 +3,22 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 {% if request.user == deck.user %}
-
-<h3>{{ deck.title }}</h3>
-<a href="{% url 'edit_deck' pk=deck.pk %}">Edit Deck Name</a>
-<p><a href="{% url 'add_card' pk=deck.pk %}">Add New Card</a></p>
-
-<div>
+<div class="maincontainer" id="edit-deck">
+  <h3>{{ deck.title }} <a href="{% url 'edit_deck' pk=deck.pk %}"><i class="fas fa-magic"></i></a></h3>
   {% for card in cards %}
-  <div>
-    <div>{{ card.question }}</div>
-    <div>{{ card.answer }}</div>
-    <p>
-        <a href="{% url 'edit_card' deck_pk=deck.pk card_pk=card.pk %}">Edit Card</a><br>    
-        <a class="red" href="{% url 'delete_card' deck_pk=deck.pk card_pk=card.pk %}">Delete Card</a>
-    </p>
-  </div>
+    <div class="edit-card">
+      <div class="qa">
+        <p>{{ card.question }}</p>
+        <p class ="answer">{{ card.answer }}</p>
+      </div>
+      <div class="options">
+        <a href="{% url 'edit_card' deck_pk=deck.pk card_pk=card.pk %}"><i class="fas fa-magic"></i></a>   
+        <a class="red" href="{% url 'delete_card' deck_pk=deck.pk card_pk=card.pk %}"><i class="fas fa-trash-alt"></i></a>
+      </div>
+    </div>
   {% endfor %}
+  <div class="add-card"><a href="{% url 'add_card' pk=deck.pk %}"><i class="fas fa-plus" style="padding-top: 10%; font-size: 4em; color: white;"></i></a>
+  </div>
 </div>
 {% else %}<div>You are not the owner of this deck.</div>{% endif %}
 {% else %}<div>Please register or login.</div>
